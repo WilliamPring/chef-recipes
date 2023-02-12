@@ -8,24 +8,6 @@
         url: '',
         userid: 1
     }
-    // $: newTodoId = totalTodos ? Math.max(...todos.map(t => t.id)) + 1 : 1
-  
-    // $: totalTodos = todos.length
-    // $: completedTodos = todos.filter(todo => todo.completed).length
-  
-    // function removeTodo(todo) {
-    //   todos = todos.filter(t => t.id !== todo.id)
-    // }
-  
-    function addRecipe() {
-      console.log(recipe)
-    }
-  
-    // let filter = 'all'
-    // const filterTodos = (filter, todos) => 
-    //   filter === 'active' ? todos.filter(t => !t.completed) :
-    //   filter === 'completed' ? todos.filter(t => t.completed) : 
-    //   todos
   
   </script>
   

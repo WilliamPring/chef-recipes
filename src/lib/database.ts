@@ -1,5 +1,5 @@
 import { createPool } from 'mysql2';
-
+import { PrismaClient } from '@prisma/client'
 export const connectToDB = createPool({
   database: import.meta.env.VITE_MQDATABASE,
   user: import.meta.env.VITE_MQUSER,
@@ -14,3 +14,5 @@ export const connectToDB = createPool({
     rejectUnauthorized: true
   }
 });
+
+export const prismaClient = new PrismaClient()

@@ -3,7 +3,8 @@ import type { PageServerLoad, Actions } from './$types';
  
 export const load = (async ({ locals }) => {
   return {
-    post: await db.getPost({locals}),
+    post: await db.getUser({locals}),
+    session: await locals.getSession(),
   };
 }) satisfies PageServerLoad;
 

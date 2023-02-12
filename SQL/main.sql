@@ -1,4 +1,11 @@
 
+CREATE TABLE User (
+  id INT NOT NULL auto_increment PRIMARY KEY,
+  name VARCHAR(100),
+  email varchar(100) NOT NULL,
+  KEY email_idx (email)
+);
+
 CREATE TABLE Recipe (
   id INT NOT NULL auto_increment PRIMARY KEY,
   name VARCHAR(25),

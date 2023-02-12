@@ -1,9 +1,19 @@
-import { connectToDB } from '$lib/database';
+import { connectToDB, prismaClient } from '$lib/database';
+import { SvelteKitAuth } from "@auth/sveltekit"
+import GitHub from "@auth/core/providers/github"
 import type { Handle } from '@sveltejs/kit';
+import { sequence } from '@sveltejs/kit/hooks';
+import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
 
-
-export const handle = (async ({ event, resolve }) => {
-    event.locals = { pool: connectToDB.promise() };
+export const dbPoolHandler = (async ({ event, resolve }) => {
+    event.locals = { pool: connectToDB.promise(), prismaClient };
     const response = await resolve(event);
     return response;
   }) satisfies Handle;
+
+export const githubHandle = SvelteKitAuth({
+  providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET })],
+})
+
+
+export const handle = sequence(dbPoolHandler, githubHandle);

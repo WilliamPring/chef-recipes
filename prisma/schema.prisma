@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Recipe {
+  id             Int     @id @default(autoincrement())
+  name           String? @db.VarChar(25)
+  description    String? @db.VarChar(50)
+  url            String? @db.VarChar(100)
+  user_parent_id Int?
+
+  @@index([user_parent_id], map: "user_parent_id_idx")
+}
+
+model RecipeInstruction {
+  id               Int   @id @default(autoincrement())
+  instruction      Json?
+  recipe_parent_id Int?
+
+  @@index([recipe_parent_id], map: "recipe_parent_id_idx")
+}
+
+model RecipeInstructionHistory {
+  id               Int       @id @default(autoincrement())
+  instruction      Json?
+  recipe_parent_id Int?
+  timestamp        DateTime? @db.Date
+
+  @@index([recipe_parent_id], map: "recipe_parent_id_idx")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  name  String? @db.VarChar(100)
+  email String  @unique(map: "unique_email") @db.VarChar(100)
+}
+
+model vt_HOLD_d2c279a7995958e3bd8ee268631d74d0_20230213182036 {
+  id         Int     @id @default(autoincrement())
+  email      String  @db.VarChar(255)
+  first_name String? @db.VarChar(255)
+  last_name  String? @db.VarChar(255)
+
+  @@map("_vt_HOLD_d2c279a7995958e3bd8ee268631d74d0_20230213182036")
+}
+
+model c0_9456_504b_bb4f_0f6b20da7da3_20230212183129_vrepl {
+  id    Int     @id @default(autoincrement())
+  name  String? @db.VarChar(100)
+  email String  @db.VarChar(100)
+
+  @@index([email], map: "email_idx")
+  @@map("_002382c0_9456_504b_bb4f_0f6b20da7da3_20230212183129_vrepl")
+}
+
+model vt_HOLD_80bcc11152d153f596aed58b6bc617d5_20230213183859 {
+  id    Int     @id @default(autoincrement())
+  name  String? @db.VarChar(100)
+  email String? @db.VarChar(100)
+
+  @@index([email], map: "email_idx")
+  @@map("_vt_HOLD_80bcc11152d153f596aed58b6bc617d5_20230213183859")
+}
+
+model a3507045_607e_5b82_8bb0_6f4f492869bb_20230212190006_vrepl {
+  id    Int     @id @default(autoincrement())
+  name  String? @db.VarChar(100)
+  email String  @db.VarChar(100)
+
+  @@index([email], map: "email_idx")
+  @@map("_a3507045_607e_5b82_8bb0_6f4f492869bb_20230212190006_vrepl")
+}

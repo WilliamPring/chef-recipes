@@ -3,6 +3,7 @@ CREATE TABLE User (
   id INT NOT NULL auto_increment PRIMARY KEY,
   name VARCHAR(100),
   email varchar(100) NOT NULL,
+  UNIQUE KEY unique_email (email)
   KEY email_idx (email)
 );
 

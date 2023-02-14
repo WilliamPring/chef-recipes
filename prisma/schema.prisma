@@ -13,9 +13,12 @@ model Recipe {
   name           String? @db.VarChar(25)
   description    String? @db.VarChar(50)
   url            String? @db.VarChar(100)
-  user_parent_id Int?
+  user_parent_id Int
+  user_email     String  @db.VarChar(250)
+  imageUrl       String? @db.VarChar(255)
 
   @@index([user_parent_id], map: "user_parent_id_idx")
+  @@index([user_email], map: "user_email_idx")
 }
 
 model RecipeInstruction {
@@ -41,38 +44,39 @@ model User {
   email String  @unique(map: "unique_email") @db.VarChar(100)
 }
 
-model vt_HOLD_d2c279a7995958e3bd8ee268631d74d0_20230213182036 {
-  id         Int     @id @default(autoincrement())
-  email      String  @db.VarChar(255)
-  first_name String? @db.VarChar(255)
-  last_name  String? @db.VarChar(255)
+model dc08e8_c6fb_58ba_9f54_2e68434a380a_20230214013722_vrepl {
+  id             Int     @id @default(autoincrement())
+  name           String? @db.VarChar(25)
+  description    String? @db.VarChar(50)
+  url            String? @db.VarChar(100)
+  user_parent_id Int?
 
-  @@map("_vt_HOLD_d2c279a7995958e3bd8ee268631d74d0_20230213182036")
+  @@index([user_parent_id], map: "user_parent_id_idx")
+  @@map("_49dc08e8_c6fb_58ba_9f54_2e68434a380a_20230214013722_vrepl")
 }
 
-model c0_9456_504b_bb4f_0f6b20da7da3_20230212183129_vrepl {
-  id    Int     @id @default(autoincrement())
-  name  String? @db.VarChar(100)
-  email String  @db.VarChar(100)
+model ff271cf4_87bb_568a_9ea9_c9d65d3a770b_20230214013620_vrepl {
+  id             Int     @id @default(autoincrement())
+  name           String? @db.VarChar(25)
+  description    String? @db.VarChar(50)
+  url            String? @db.VarChar(100)
+  user_parent_id Int
+  user_email     String  @db.VarChar(250)
 
-  @@index([email], map: "email_idx")
-  @@map("_002382c0_9456_504b_bb4f_0f6b20da7da3_20230212183129_vrepl")
+  @@index([user_email], map: "user_email_idx")
+  @@index([user_parent_id], map: "user_parent_id_idx")
+  @@map("_ff271cf4_87bb_568a_9ea9_c9d65d3a770b_20230214013620_vrepl")
 }
 
-model vt_HOLD_80bcc11152d153f596aed58b6bc617d5_20230213183859 {
-  id    Int     @id @default(autoincrement())
-  name  String? @db.VarChar(100)
-  email String? @db.VarChar(100)
+model c0aa_1f54_5c89_8ab5_7df6a3023ab5_20230214024021_vrepl {
+  id             Int     @id @default(autoincrement())
+  name           String? @db.VarChar(25)
+  description    String? @db.VarChar(50)
+  url            String? @db.VarChar(100)
+  user_parent_id Int
+  user_email     String  @db.VarChar(250)
 
-  @@index([email], map: "email_idx")
-  @@map("_vt_HOLD_80bcc11152d153f596aed58b6bc617d5_20230213183859")
-}
-
-model a3507045_607e_5b82_8bb0_6f4f492869bb_20230212190006_vrepl {
-  id    Int     @id @default(autoincrement())
-  name  String? @db.VarChar(100)
-  email String  @db.VarChar(100)
-
-  @@index([email], map: "email_idx")
-  @@map("_a3507045_607e_5b82_8bb0_6f4f492869bb_20230212190006_vrepl")
+  @@index([user_email], map: "user_email_idx")
+  @@index([user_parent_id], map: "user_parent_id_idx")
+  @@map("_7104c0aa_1f54_5c89_8ab5_7df6a3023ab5_20230214024021_vrepl")
 }

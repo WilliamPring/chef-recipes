@@ -1,12 +1,16 @@
-export async function getRecipesByUser({ locals, userId }) {
+import { Recipe, RecipeDto } from '$lib/interface';
+
+
+
+export async function getRecipesByUser({ locals, user_email }): Promise<RecipeDto[]> {
     const { prismaClient } = locals;
   
   
-    const data = await prismaClient.Recipe.findMany({
+    const data: Array<Recipe> = await prismaClient.Recipe.findMany({
       where: {
-        user_parent_id: userId,
+        user_email,
       }
     })
-  
-    return { userRecipe: data }
+    console.log("data", data)
+    return data
   };

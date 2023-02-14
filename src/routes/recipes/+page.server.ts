@@ -1,13 +1,15 @@
 import * as db from '$lib/server/database';
 import * as recipe from '$lib/server/db/recipe';
+import { RecipeDto } from '$lib/interface/Recipe';
 
 import type { PageServerLoad, Actions } from './$types';
 
-export const load = (async ({ locals, parent }) => {
-  const { user } = await parent()
-  console.log(user.id)
+export const load = (async ({ locals, parent }):  Promise<{
+  userRecipe: RecipeDto[];
+}> => {
+  const { user } = await locals.getSession()
   return {
-    data: await recipe.getRecipesByUser({locals, userId: user.id})
+    userRecipe: await recipe.getRecipesByUser({locals, email: user.user_email })
   };
 }) satisfies PageServerLoad;
 

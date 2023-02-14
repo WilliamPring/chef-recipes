@@ -12,14 +12,25 @@
     <span class="signedInText">
       <small>Signed in as</small><br /> 
     </span>
-    <h2>User Data</h2>
-    <ul>
-      <!-- {#each data.post.users as post}
-        <li>
-            {post.email}
-        </li>
-      {/each} -->
-    </ul>
+    <h2>Recipe</h2>
+
+    <table>
+      <tr>
+        <td>Image</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Link</td>
+      </tr>
+      {#each data.userRecipe as recipe}
+      <tr>
+        <td></td>
+        <td>{recipe.name}</td>
+        <td>{recipe.description}</td>
+        <td>{recipe.id}</td>
+      </tr>
+      {/each}
+    </table>
+ 
   </aside>
 {/if}
 

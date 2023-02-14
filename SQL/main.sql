@@ -12,8 +12,11 @@ CREATE TABLE Recipe (
   name VARCHAR(25),
   description VARCHAR(50),
   url VARCHAR(100),
-  user_parent_id INT,
+  user_parent_id INT NOT NULL,
+  user_email VARCHAR(250) NOT NULL,
   KEY user_parent_id_idx (user_parent_id)
+  KEY user_email_idx (user_email)
+
 );
 
 CREATE TABLE RecipeInstruction (

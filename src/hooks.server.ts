@@ -6,7 +6,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
 
 export const dbPoolHandler = (async ({ event, resolve }) => {
-    event.locals = { pool: connectToDB.promise(), prismaClient };
+    event.locals = { pool: connectToDB.promise(), prismaClient, userData: { name: "", email: "", id: 0 } };
     const response = await resolve(event);
     return response;
   }) satisfies Handle;

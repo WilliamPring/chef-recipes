@@ -3,6 +3,7 @@
     import type { PageData } from './$types';
     import NewRecipe from '../../components/NewRecipe.svelte'
     export let data: PageData;
+    console.log(data)
   </script>
 
 {#if $page.data.session}

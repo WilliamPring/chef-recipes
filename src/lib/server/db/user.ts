@@ -6,6 +6,8 @@ export async function createupdateUserIfNotExist({ locals }) {
     if(session === null) {
       return {session, upsertUser: {} }
     }
+
+    
     const upsertUser = await prismaClient.User.upsert({
       where: { email: session?.user.email || "" },
       update: {},
@@ -14,6 +16,7 @@ export async function createupdateUserIfNotExist({ locals }) {
         name: session.user.name
       },
     })
-    
     return {session, upsertUser }
 };
+
+

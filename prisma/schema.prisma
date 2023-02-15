@@ -24,7 +24,8 @@ model Recipe {
 model RecipeInstruction {
   id               Int   @id @default(autoincrement())
   instruction      Json?
-  recipe_parent_id Int?
+  ingredients      Json?
+  recipe_parent_id Int   @unique(map: "recipe_parent_id")
 
   @@index([recipe_parent_id], map: "recipe_parent_id_idx")
 }
@@ -79,4 +80,33 @@ model c0aa_1f54_5c89_8ab5_7df6a3023ab5_20230214024021_vrepl {
   @@index([user_email], map: "user_email_idx")
   @@index([user_parent_id], map: "user_parent_id_idx")
   @@map("_7104c0aa_1f54_5c89_8ab5_7df6a3023ab5_20230214024021_vrepl")
+}
+
+model ce40de7b_31ea_5389_aaad_67cec0ae05a2_20230214224121_vrepl {
+  id               Int   @id @default(autoincrement())
+  instruction      Json?
+  recipe_parent_id Int?
+
+  @@index([recipe_parent_id], map: "recipe_parent_id_idx")
+  @@map("_ce40de7b_31ea_5389_aaad_67cec0ae05a2_20230214224121_vrepl")
+}
+
+model b7fb_97c2_554b_aa6d_f5b0da4f219d_20230215001638_vrepl {
+  id               Int   @id @default(autoincrement())
+  instruction      Json?
+  ingredients      Json?
+  recipe_parent_id Int?
+
+  @@index([recipe_parent_id], map: "recipe_parent_id_idx")
+  @@map("_0487b7fb_97c2_554b_aa6d_f5b0da4f219d_20230215001638_vrepl")
+}
+
+model a9c51738_4216_5e8a_a411_63f89a80990b_20230215003812_vrepl {
+  id               Int   @id @default(autoincrement())
+  instruction      Json?
+  ingredients      Json?
+  recipe_parent_id Int
+
+  @@index([recipe_parent_id], map: "recipe_parent_id_idx")
+  @@map("_a9c51738_4216_5e8a_a411_63f89a80990b_20230215003812_vrepl")
 }

@@ -1,5 +1,17 @@
 <script lang="ts">
 import { page } from '$app/stores';
-console.log("inv recipe page", page)
+import type { PageData } from './$types';
+console.log("inv recipe page....", page)
+
+export let data: PageData;
+console.log("data", data)
+
 </script>
-<h1>{$page.params.slug}</h1>
+
+
+
+{#if $page.data.session}
+  <aside>
+    <h1>{$page.params.slug}</h1>
+  </aside>
+{/if}

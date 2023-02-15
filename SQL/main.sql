@@ -22,7 +22,8 @@ CREATE TABLE Recipe (
 CREATE TABLE RecipeInstruction (
     id INT NOT NULL auto_increment PRIMARY KEY,
     instruction JSON,
-    recipe_parent_id INT,
+    ingredients JSON,
+    recipe_parent_id INT NOT NULL UNIQUE,
     KEY recipe_parent_id_idx (recipe_parent_id)
 );
 
